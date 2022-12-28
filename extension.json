@@ -1,0 +1,60 @@
+{
+	"identifier": "com.tommasonegri.novatypes",
+	"name": "Nova Types",
+	"organization": "Tommaso Negri",
+	"description": "Types and documentation for Nova extensions API",
+	"version": "1.0",
+	"categories": ["commands"],
+
+	"main": "main.js",
+
+	"entitlements": {
+		"filesystem": "readwrite"
+	},
+
+	"commands": {
+		"extensions": [
+			{
+				"title": "Generate Types Declaration",
+				"command": "com.tommasonegri.novatypes.generateTypesDeclaration",
+				"when": "com.tommasonegri.novatypes.isNovaExtension"
+			},
+			{
+				"title": "Check for Updates",
+				"command": "com.tommasonegri.novatypes.checkForUpdates",
+				"when": "com.tommasonegri.novatypes.isNovaExtension"
+			}
+		]
+	},
+
+	"config": [
+		{
+			"key": "nova-types.foobar",
+			"title": "Foo the bar",
+			"type": "boolean",
+			"default": false
+		}
+	],
+
+	"configWorkspace": [
+		{
+			"key": "com.tommasonegri.novatypes.automaticallyCheckForUpdates",
+			"type": "boolean",
+			"title": "Automatically keep Nova Types up to date",
+			"required": true,
+			"default": true
+		},
+		{
+			"key": "com.tommasonegri.novatypes.destinationFolder",
+			"type": "path",
+			"title": "Destination Folder",
+			"description": "The folder in which the nova.d.ts file will be generated. Relative to the project's folder.",
+			"allowFiles": false,
+			"allowFolders": true,
+			"relative": true,
+			"required": true,
+			"placeholder": "/Scripts/types/",
+			"default": "/Scripts/types/"
+		}
+	]
+}

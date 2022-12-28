@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require "securerandom"
+
+PATH = "Scripts/types/nova.d.ts"
+
+OLD_TOKEN = /\/\*\~\*\~\* REFRESH_TOKEN: [a-zA-Z-0-9]*? \*\~\*\~\*\//
+NEW_TOKEN = "/*~*~* REFRESH_TOKEN: #{SecureRandom.hex(10)} *~*~*/"
+
+modified_content = File.read(PATH).gsub(OLD_TOKEN, NEW_TOKEN)
+
+File.open(PATH, "w+") do |file|
+	file << modified_content
+end
