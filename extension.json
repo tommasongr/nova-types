@@ -2,9 +2,9 @@
 	"identifier": "com.tommasonegri.novatypes",
 	"name": "Nova Types",
 	"organization": "Tommaso Negri",
-	"description": "Types and documentation for Nova extensions API",
+	"description": "Types and documentation for the Nova extensions API",
 	"version": "1.0",
-	"categories": ["commands"],
+	"categories": ["commands", "completions", "languages"],
 
 	"main": "main.js",
 
@@ -26,15 +26,6 @@
 			}
 		]
 	},
-
-	"config": [
-		{
-			"key": "nova-types.foobar",
-			"title": "Foo the bar",
-			"type": "boolean",
-			"default": false
-		}
-	],
 
 	"configWorkspace": [
 		{

@@ -1,13 +1,6 @@
 const { showNotification, isNovaExtension } = require("./helpers")
 
 exports.activate = function() {
-	nova.workspace.config.onDidChange("com.tommasonegri.novatypes.automaticallyCheckForUpdates", (newValue, oldValue) => {
-		console.log(newValue)
-		console.log(oldValue)
-
-		console.log(this)
-	})
-
 	nova.workspace.config.set("com.tommasonegri.novatypes.isNovaExtension", isNovaExtension)
 
 	if (nova.workspace.config.get("com.tommasonegri.novatypes.isNovaExtension") && nova.workspace.config.get("com.tommasonegri.novatypes.automaticallyCheckForUpdates")) {
@@ -36,8 +29,8 @@ nova.commands.register("com.tommasonegri.novatypes.generateTypesDeclaration", (w
 		nova.fs.copy(declarationFilePath, destinationFilePath)
 
 		showNotification({
-			title: "Types declaration file generated",
-			body: "You can now start enjoying Nova with types."
+			title: "Types added to the project",
+			body: "Enjoy a better Nova development experience."
 		})
 	} catch (error) {
 		nova.workspace.showErrorMessage(error)
@@ -59,7 +52,7 @@ nova.commands.register("com.tommasonegri.novatypes.checkForUpdates", (workspace,
 		const projectTypesFilePath   = nova.path.join(projectTypesFolderPath, "nova.d.ts")
 
 		if (!nova.fs.access(projectTypesFilePath, nova.fs.F_OK)) {
-			if (verbose) throw new Error("Impossible to check for updates: the project does not have a types declaration file.")
+			if (verbose) throw new Error("Impossible to check for updates: types declaration file missing.")
 			return
 		}
 
@@ -78,7 +71,8 @@ nova.commands.register("com.tommasonegri.novatypes.checkForUpdates", (workspace,
 			if (extensionRefreshToken != projectRefreshToken) {
 				showNotification({
 					id: "com.tommasonegri.novatypes.updateAvailable",
-					title: "Types update available",
+					title: "Update available",
+					body: "New types available.",
 					actions: ["Upgrade", "OK"],
 					handler: (response) => {
 						if (response.actionIdx == 0) {
@@ -95,7 +89,7 @@ nova.commands.register("com.tommasonegri.novatypes.checkForUpdates", (workspace,
 				})
 			}
 		} else {
-			throw new Error("Impossible to check for updates: the types declaration refresh token has not been found.")
+			throw new Error("Impossible to check for updates: types declaration refresh token missing.")
 		}
 	} catch (error) {
 		nova.workspace.showErrorMessage(error.message)

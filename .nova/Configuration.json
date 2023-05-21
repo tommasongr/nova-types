@@ -1,4 +1,4 @@
 {
-  "com.tommasonegri.novatypes.isNovaExtension" : false,
-  "com.tommasonegri.novatypes.manuallyDisabled" : true
+  "com.tommasonegri.novatypes.manuallyDisabled" : true,
+  "workspace.name" : "Nova Types.novaextension"
 }

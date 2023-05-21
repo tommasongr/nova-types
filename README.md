@@ -1,72 +1,42 @@
-<!--
-👋 Hello! As Nova users browse the extensions library, a good README can help them understand what your extension does, how it works, and what setup or configuration it may require.
 
-Not every extension will need every item described below. Use your best judgement when deciding which parts to keep to provide the best experience for your new users.
 
-💡 Quick Tip! As you edit this README template, you can preview your changes by selecting **Extensions → Activate Project as Extension**, opening the Extension Library, and selecting "Nova Types" in the sidebar.
+**Nova Types** provides a types declaration for the **Nova API** up-to-date with `v10.6`. Future declaration updates will be delivered through this extension.
 
-Let's get started!
--->
-
-<!--
-🎈 Include a brief description of the features your extension provides. For example:
--->
-
-**Nova Types** provides integration with **A Helpful Tool**, including the most important feature, something that's really helpful, and _a little-known secret!_
-
-<!--
-🎈 It can also be helpful to include a screenshot or GIF showing your extension in action:
--->
-
-![](https://nova.app/images/en/dark/editor.png)
+![](https://raw.githubusercontent.com/tommasongr/nova-types/main/misc/preview.png)
 
 ## Requirements
 
-<!--
-🎈 If your extension depends on external processes or tools that users will need to have, it's helpful to list those and provide links to their installers:
--->
+### TypeScript
 
-Nova Types requires some additional tools to be installed on your Mac:
+Even if you can continue to write your Nova extensions in pure JavaScript, Nova Types relies on TypeScript to provide types suggestions. Therefore, make sure to have a TypeScript extension installed as well.
 
-- [Node.js 8.2.0](https://nodejs.org) and NPM 5.2.0 or newer
+Nova Types has been tested with the following TypeScript extension:
 
-<!--
-✨ Providing tips, tricks, or other guides for installing or configuring external dependencies can go a long way toward helping your users have a good setup experience:
--->
-
-> To install the current stable version of Node, click the "Recommended for Most Users" button to begin the download. When that completes, double-click the **.pkg** installer to begin installation.
+- [TypeScript](nova://extension/?id=apexskier.typescript&name=TypeScript) by Cameron Little
 
 ## Usage
 
-<!--
-🎈 If users will interact with your extension manually, describe those options:
--->
+To generate Nova Types:
 
-To run Nova Types:
+- Select the **Extensions → Nova Types → Generate Types Declaration** menu item; or
+- Open the command palette and type `Generate Types Declaration`
 
-- Select the **Editor → Nova Types** menu item; or
-- Open the command palette and type `Nova Types`
-
-<!--
-🎈 Alternatively, if your extension runs automatically (as in the case of a validator), consider showing users what they can expect to see:
--->
-
-Nova Types runs any time you open a local project, automatically lints all open files, then reports errors and warnings in Nova's **Issues** sidebar and the editor gutter:
-
-![](https://nova.app/images/en/light/tools/sidebars.png)
+> Unless you specify otherwise, Nova Types will **check for updates** any time you open a local project with a previously generated types declaration.
 
 ### Configuration
 
-<!--
-🎈 If your extension offers global- or workspace-scoped preferences, consider pointing users toward those settings. For example:
--->
+Types definition will be generated in a `/Scripts/types/` folder of your project by default.
 
-To configure global preferences, open **Extensions → Extension Library...** then select Nova Types's **Preferences** tab.
+You can change this location and other options on a per-project basis in **Project → Project Settings → Nova Types**
 
-You can also configure preferences on a per-project basis in **Project → Project Settings...**
+## Improving the experience
 
-<!--
-👋 That's it! Happy developing!
+To get the most out of Nova Types it's highly recommend to add a `jsconfig.json` file with the following configuration to the project:
 
-P.S. If you'd like, you can remove these comments before submitting your extension 😉
--->
+```json
+{
+	"compilerOptions": {
+		"checkJs": true
+	}
+}
+``` 
